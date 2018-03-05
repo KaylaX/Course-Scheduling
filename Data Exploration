@@ -19,3 +19,23 @@ for term in sorted(df.loc[:,'Term'].unique()):
     plt.xlabel('Student counts for total units({})'.format(term))
     i += 1
 plt.show()
+
+major_list = []
+for major in df.loc[:,'Major'].unique().astype(str):
+    lst = major.split(',')
+    if len(lst)==1 :
+        major_list.append(lst[0])
+    else:
+        for item in lst:
+            major_list.append(item)
+print('Number of Majors: {}'.format(len(set(major_list))))
+
+objective_list = []
+for obj in df.loc[:,'Objective'].unique().astype(str):
+    lst = obj.split(',')
+    if len(lst)==1 :
+        objective_list.append(lst[0])
+    else:
+        for item in lst:
+            objective_list.append(item)
+print('Number of Objectives: {}'.format(len(set(objective_list))))
