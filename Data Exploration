@@ -1,0 +1,7 @@
+df1 = df.groupby(['Randomized Unique Identifier'])['Units'].sum()
+print(df1.head())
+
+df1.plot(kind='hist', bins=20, edgecolor='black')
+plt.title('Student counts for total units')
+plt.xlabel('Total Units')
+plt.show()
