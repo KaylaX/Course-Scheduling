@@ -5,3 +5,17 @@ df1.plot(kind='hist', bins=20, edgecolor='black')
 plt.title('Student counts for total units')
 plt.xlabel('Total Units')
 plt.show()
+
+for term in sorted(df.loc[:,'Term'].unique()):
+    df1 = df.loc[df.loc[:,'Term']==term,:].groupby(['Randomized Unique Identifier'])['Units'].sum()
+    print('term {}: mean {:.2f}, std {:.2f}, max {}, min{}'.format(term, df1.mean(), df1.std(), df1.max(), df1.min()))
+
+i = 1
+plt.figure(figsize=(7,25))
+for term in sorted(df.loc[:,'Term'].unique()):
+    plt.subplot(6,1,i)
+    df1 = df.loc[df.loc[:,'Term']==term,:].groupby(['Randomized Unique Identifier'])['Units'].sum()
+    df1.plot(kind='hist', bins=range(25), edgecolor='black')
+    plt.xlabel('Student counts for total units({})'.format(term))
+    i += 1
+plt.show()
